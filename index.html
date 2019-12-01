@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <section>
+                <h3>Referential transparency</h3>
+                <pre><code class="hljs" data-trim data-line-numbers="9-10">
+int add(int a, int b) {
+    return a + b
+}
+
+int mult(int a, int b) {
+    return a * b;
+}
+
+int x = add(2, mult(3, 4));
+int y = add(2, 12);
+					</code></pre>
+                <aside class="notes"></aside>
+            </section>
+            <section>
+                <pre><code class="hljs" data-trim>
+if num1 == 0 and sign == '+' and num2 == 0:
+    print("0+0 = 0")
+if num1 == 0 and sign == '+' and num2 == 1:
+    print("0+1 = 1")
+if num1 == 0 and sign == '+' and num2 == 2:
+    print("0+2 = 2")
+if num1 == 0 and sign == '+' and num2 == 3:
+    print("0+3 = 3")
+if num1 == 0 and sign == '+' and num2 == 4:
+    print("0+4 = 4")
+if num1 == 0 and sign == '+' and num2 == 5:
+    print("0+5 = 5")
+if num1 == 0 and sign == '+' and num2 == 6:
+    print("0+6 = 6")
+					</code></pre>
+
+            </section>
+        </section>
+        <section>
+            <h3>Side effects</h3>
+            <ul>
+                <li>Changing object in place</li>
+                <li>Logging to file</li>
+                <li>Saving to database</li>
+                <li>Throwing error (new goto statement)</li>
+            </ul>
+            <aside class="notes">
+                <ul>
+                </ul>
+            </aside>
+        </section>
+        <section>
+            <h2>Functional Programming Fundamentals</h2>
+            <ul>
+                <li>Functions are first class citizens</li>
+                <li>Pure functions</li>
+                <ul>
+                    <li>No side effects</li>
+                    <li>Referential transparency</li>
+                </ul>
+            </ul>
+            <aside class="notes">
+                <ul>
+                    <li>Functions are first class citizens</li>
+                    - zapisujemy je do zmiennej, zwracamy, komponujemy
+                    <li>Pure functions</li>
+                    - funkcja czysta to taka która nie ma efektów ubocznych
+                    - jej wynik zależy tylko od argumentów wejściowych - można wywołanie tej funkcji zamienić na wynik
+                </ul>
+            </aside>
+        </section>
+        <section>
+            <h2>Introduction to vavr.io</h2>
+            <p>
+                <small>Created by <a href="http://github.com/kamil-stasiak">Kamil Stasiak</a></small>
+            </p>
+
+            <aside class="notes">
+                Dzisiejsza prezentacja jest wprowadzeniem do progrowamowania funkcyjnego z wykorzystaniem biblioteki
+                vavr.io.
+            </aside>
+        </section>
+
+        <section>
+            <section>
+                <h2>Agenda</h2>
+                <ul>
+                    <li>Functional Programming Fundamentals</li>
+                    <li>Java in functional world</li>
+                </ul>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section id="themes">
+                <h2>Themes</h2>
+                <p>
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
+                        (default)</a> -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+                    <br>
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+                </p>
+            </section>
+        </section>
+        <section>Slide 2</section>
+    </div>
+</div>
+
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {src: 'plugin/highlight/highlight.js', async: true}
+        ]
+    });
+</script>
+</body>
+</html>
