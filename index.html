@@ -85,16 +85,12 @@
         </section>
 
         <section>
-            <h2>Functional Programming Fundamentals</h2>
+            <h2>Functions are first class citizens</h2>
             <ul>
-                <li>Functions are first class citizens
-                    <ul>
-                        <li>Higher order functions</li>
-                        <li>Curring</li>
-                        <li>Lifting</li>
-                        <li>Partial application</li>
-                    </ul>
-                </li>
+                <li>Higher order functions</li>
+                <li>Curring</li>
+                <li>Lifting</li>
+                <li>Partial application</li>
             </ul>
             <aside class="notes">
                 - first class citizen - mogą być przekazywane, zwracana, przypisywane i porównywane.
@@ -105,45 +101,162 @@
                 w przypadku, gdy wyjdziemy za zakres początkowej domeny to dostaniemy None()
             </aside>
         </section>
-
-
         <section>
-            <h2>Functional Programming Fundamentals</h2>
+            <h2>Pure functions</h2>
             <ul>
-                <li>Functions are first class citizens
-                    <ul>
-                        <li>Higher order functions</li>
-                        <li>Curring</li>
-                        <li>Lifting</li>
-                    </ul>
-                </li>
-                <li>Pure functions
-                    <ul>
-                        <li>No side effects</li>
-                        <li>Referential transparency</li>
-                    </ul>
-                </li>
-                <li>Values
-                    <ul>
-                        <li>Immutable objects</li>
-                        <li>Persistent/Functional data structure</li>
-                    </ul>
-                </li>
+                <li>Referential transparency</li>
+                <li>No side effects</li>
             </ul>
             <aside class="notes">
-                <ul>
-                    <li>Functions are first class citizens</li>
-                    - HOC - funkcja która zwraca lub przyjmuje jako parametr inne funkcje
-                    - curring -
-                    - lifting - rozszerzenie zakresu funkcji na większą domenę (dzielenie przez 0)
-                    w przypadku, gdy wyjdziemy za zakres początkowej domeny to dostaniemy None()
-                    <li>Pure functions</li>
-                    a
-                    - funkcja czysta to taka która nie ma efektów ubocznych
-                    - jej wynik zależy tylko od argumentów wejściowych - można wywołanie tej funkcji zamienić na wynik
-                    if a call can be replaced by its value without affecting the behavior of the program
-                    - funkcja jest czysta, jeżeli jej wszystkie wyrażenia są referential transparent
-                </ul>
+                - pure function - wynik zależy tylko od argumentów wejściowych
+                - referential transparency - można wywołanie tej funkcji zamienić na jej wynik bez wpływu na działanie
+                programu
+                - funkcja jest czysta, jeżeli jej wszystkie wyrażenia są referential transparent
+                - funkcja czysta nie ma efektów ubocznych
+            </aside>
+        </section>
+
+        <section>
+            <section>
+                <h3>Referential transparency</h3>
+                <pre><code class="hljs" data-trim data-line-numbers="9-10">
+int add(int a, int b) {
+    return a + b
+}
+
+int mult(int a, int b) {
+    return a * b;
+}
+
+int x = add(2, mult(3, 4));
+int y = add(2, 12);
+					</code></pre>
+                <aside class="notes"></aside>
+            </section>
+            <section>
+                <pre><code class="hljs" data-trim>
+if num1 == 0 and sign == '+' and num2 == 0:
+    print("0+0 = 0")
+if num1 == 0 and sign == '+' and num2 == 1:
+    print("0+1 = 1")
+if num1 == 0 and sign == '+' and num2 == 2:
+    print("0+2 = 2")
+if num1 == 0 and sign == '+' and num2 == 3:
+    print("0+3 = 3")
+if num1 == 0 and sign == '+' and num2 == 4:
+    print("0+4 = 4")
+if num1 == 0 and sign == '+' and num2 == 5:
+    print("0+5 = 5")
+if num1 == 0 and sign == '+' and num2 == 6:
+    print("0+6 = 6")
+					</code></pre>
+            </section>
+        </section>
+
+        <section>
+            <h2>Values</h2>
+            <ul>
+                <li>Immutable objects</li>
+                <li>Persistent/Functional data structure</li>
+            </ul>
+            <aside class="notes">
+                Informacje, dane, fakty - to jest centrum tego nad czym pracujemy. Odbieramy dane wejściowe,
+                przetwarzamy je,
+                przechowujemy, analizujemy, wyciągamy wnioski, wyświetlamy, filtrujemy.
+
+                Informacje są stałe w czasie.
+                - O 8:05 ktoś dodał komputer do koszyka w sklepie internetowym
+                - O 8:06 dodał myszkę
+                - O 8:07 usunał komputer
+                - 0 8:08 zatwierdził zamówienie.
+
+                To są fakty. Faktem jest, że koniec ostatecznie kupił tylko myszkę, ale to nie jest powód by zapominać
+                ostatnie indormacje.
+
+                Ludzka pamięć to doklajanie kolejnych faktów a nie zastępowanie ich. Jeżeli ktoś zmieni nazwisko to
+                nauczymy się nowego nazwiska, a nie zastąpimy stare nazwisko nowym. Będziemy wiedzieli że, nasz znajomy
+                kiedyś nazywał się Robert a teraz nazywa się Rob (Gryn) bo wyjechał za granicę po skończeniu
+                podstawówki. Sprawdzając dzienniki z podstawówki znjadziemy tam zapis, że kiedyś był Robertem. Tak samo
+                nazwiska panieńskie są czaęsto zastępywane, ale faktem pozostaje, że dana osoba w którymś momencie
+                nazywałą się inaczej. Nie powinniśmy tych faktów zapominać.
+
+                A więc można powiedzieć, że stan można wyznaczyć traktując jakieś dane jakąś funkcją. ???
+
+                Values - dane się nie zmieniają, pojawiają się nowe
+
+                Values
+                - łatwo się porównuje.
+                - współdzieli - przekazalibyście do 2 obiektów ten sam obiekt typu Date albo kolekcję? no ja nie, bo
+                wiem, że można go łatwo zmieniać.
+                a jak czegoś nie można zmieniać, to możan użyć jednego obiektu i wszyskim zainteresowanym dać do niego
+                referencję. Nie trzeba
+                robić defensive copying. Ale już ten sam obiekt string, LocalDate albo niemutowalna kolekcję? Zero
+                stresu
+                - jeżeli jeden obiekt jest współdzielony przez 2 funkcje (dwie funkcje na nim operują) i jedna z nich
+                zmieni ten obiekt,
+                to może to wpłynąć na wynik drugiej funkcji - czy trzeba to wyjaśniać?
+                - raz policzony hashCode nigdy się nie zmieni
+                - nie trzeba implementować clone bo można reużywać obiektów
+                - niemutowalny string super, niemutowalna data super ale niemutowalny nasz własny obeikt? Niemutowalna
+                lista? LOL nie dziękuję
+                - jezeli ktoś mi coś daje, daje coś do mojej funkcji i to coś może sie zmienić, to jest to mocno
+                błedogennea
+                - zerkam sobie na obiekt w momencie kiedy mogę, kiedy dostanę czas procesora, kiedy dane do mnie dolecą
+                (dostaję tylko link do zasobu a zasób pod spodem ewoluuje ;/)
+                - albo od razu sobie stworzę kopię tego obiektu i na nim będę działał (tworzenie kopii też chwilę trwa)
+                - albo moja funkcja przestanie być deteminsytczna bo przy inpucie A może wygenerować B albo C w
+                zależności
+                czy w danym momencie obiekt się zmienił lub nie.
+
+                Wiedza jest pochoodną z faktów
+                - fakty można łączyć
+                - dakty można porównywać
+
+                Fakty to nie stan obecny! Facts != Recent Facts
+                You cannot update a fact, you can't change the past
+
+                Komunikujemuy się JSONem z innymi systemami (danymi) ale wewnątrz systemu psujemy to komunikując sie
+                obiektami
+                Dane się nie zmieniają, obiekty mogą się zmieniać. Dlaczego tak sobie komplikujemy programy w
+                mikroskali,
+                skoro w makroskali to działa dobrze. Dane są super i decyzje
+                które na podstawie tych jsonów są pobierane są na dany moment w czasie i godzimy się z tym. Jeżeli
+                pojawią
+                się nowe fakty to podejmiemy nowe decyzje, nie musimy zmieniać aktualnych.
+            </aside>
+        </section>
+
+        <section>
+            <h2>Immutable objects</h2>
+            <p class="fragment">Date vs LocalDateTime</p>
+            <p class="fragment">List vs String</p>
+            <aside class="notes">
+                Fakty się stały w przeszłości i my je zarejestrowaliśmy. Jeżeli na podstawie nowych faktów podejmiemy
+                jakieś działanie albo decyzję, nie wpływa to na fakty które mieliśmy. Wię o ile obiekt w kontkretnym
+                stanie jest wynikiem wcześniejszych faktów, to nie jest on faktem samym w sobie. Ale ten wynikt, też
+                jest wynikiem w jakimś czasie, jeżeli pojawią się nowe fakty to i ten wynik się zmieni.
+
+                Jeżeli otrzymane fakty będą niemutowalne to możemy w łatwy sposób na nich pracować. wiele wątków może
+                czytać ten sam obiekt. Modyfikacja obieków w miejsce jest bardzo niebezpieczne i błędogenna.
+
+                Między usługami wysyłamy same dane, niezmienne obiekty Json/XML Over Http więc dlaczeg wewenętrznie
+                w systmie nie korzystać z tego. Frontend dostaje dane, przetwarza je i odsyła nowe zmienione przez
+                użytkownika.
+
+                Takie niezminne obiekty
+                - łatwo się porównuje
+                - współdzieli - można użyć jednego obiektu i wszyskim zainteresowanym dać do niego referencję.
+                Nie trzeba robić defensive copying
+                - można raz stworzonego obiektu reużywać i nie trzeba go clonować i implementować clone
+
+                W zmiennym świecie łatwo o błędy:
+                - jeżeli jeden obiekt jest współdzielony przez 2 funkcje (dwie funkcje na nim operują) i jedna z nich
+                zmieni ten obiekt, to może to wpłynąć na wynik drugiej funkcji
+
+                Niemutowalny String super, niemutowalna Data super, niemutowalny customer? Dlaczego nie?
+
+                Fakty to nie stan obecny! Facts != Recent Facts
+                You cannot update a fact, you can't change the past
             </aside>
         </section>
 
@@ -294,75 +407,7 @@
         </section>
         <section>
             <h2>Values</h2>
-            <aside class="notes">
-                Informacje, dane, fakty - to jest centrum tego nad czym pracujemy. Odbieramy dane wejściowe,
-                przetwarzamy je,
-                przechowujemy, analizujemy, wyciągamy wnioski, wyświetlamy, filtrujemy.
-
-                Informacje są stałe w czasie.
-                - O 8:05 ktoś dodał komputer do koszyka w sklepie internetowym
-                - O 8:06 dodał myszkę
-                - O 8:07 usunał komputer
-                - 0 8:08 zatwierdził zamówienie.
-
-                To są fakty. Faktem jest, że koniec ostatecznie kupił tylko myszkę, ale to nie jest powód by zapominać
-                ostatnie indormacje.
-
-                Ludzka pamięć to doklajanie kolejnych faktów a nie zastępowanie ich. Jeżeli ktoś zmieni nazwisko to
-                nauczymy
-                się nowego nazwiska, a nie zastąpimy stare nazwisko nowym. Będziemy wiedzieli że, nasz znajomy kiedyś
-                nazywał
-                się Robert a teraz nazywa się Rob (Gryn) bo wyjechał za granicę po skończeniu podstawówki. Sprawdzając
-                dzienniki
-                z podstawówki znjadziemy tam zapis, że kiedyś był Robertem. Tak samo nazwiska panieńskie są czaęsto
-                zastępywane,
-                ale faktem pozostaje, że dana osoba w którymś momencie nazywałą się inaczej. Nie powinniśmy tych faktów
-                zapominać.
-
-                A więc można powiedzieć, że stan można wyznaczyć traktując jakieś dane jakąś funkcją. ???
-
-                Values - dane się nie zmieniają, pojawiają się nowe
-
-                Values
-                - łatwo się porównuje.
-                - współdzieli - przekazalibyście do 2 obiektów ten sam obiekt typu Date albo kolekcję? no ja nie, bo
-                wiem, że można go łatwo zmieniać.
-                a jak czegoś nie można zmieniać, to możan użyć jednego obiektu i wszyskim zainteresowanym dać do niego
-                referencję. Nie trzeba
-                robić defensive copying. Ale już ten sam obiekt string, LocalDate albo niemutowalna kolekcję? Zero
-                stresu
-                - jeżeli jeden obiekt jest współdzielony przez 2 funkcje (dwie funkcje na nim operują) i jedna z nich
-                zmieni ten obiekt,
-                to może to wpłynąć na wynik drugiej funkcji - czy trzeba to wyjaśniać?
-                - raz policzony hashCode nigdy się nie zmieni
-                - nie trzeba implementować clone bo można reużywać obiektów
-                - niemutowalny string super, niemutowalna data super ale niemutowalny nasz własny obeikt? Niemutowalna
-                lista? LOL nie dziękuję
-                - jezeli ktoś mi coś daje, daje coś do mojej funkcji i to coś może sie zmienić, to jest to mocno
-                błedogennea
-                - zerkam sobie na obiekt w momencie kiedy mogę, kiedy dostanę czas procesora, kiedy dane do mnie dolecą
-                (dostaję tylko link do zasobu a zasób pod spodem ewoluuje ;/)
-                - albo od razu sobie stworzę kopię tego obiektu i na nim będę działał (tworzenie kopii też chwilę trwa)
-                - albo moja funkcja przestanie być deteminsytczna bo przy inpucie A może wygenerować B albo C w
-                zależności
-                czy w danym momencie obiekt się zmienił lub nie.
-
-                Wiedza jest pochoodną z faktów
-                - fakty można łączyć
-                - dakty można porównywać
-
-                Fakty to nie stan obecny! Facts != Recent Facts
-                You cannot update a fact, you can't change the past
-
-                Komunikujemuy się JSONem z innymi systemami (danymi) ale wewnątrz systemu psujemy to komunikując sie
-                obiektami
-                Dane się nie zmieniają, obiekty mogą się zmieniać. Dlaczego tak sobie komplikujemy programy w
-                mikroskali,
-                skoro w makroskali to działa dobrze. Dane są super i decyzje
-                które na podstawie tych jsonów są pobierane są na dany moment w czasie i godzimy się z tym. Jeżeli
-                pojawią
-                się nowe fakty to podejmiemy nowe decyzje, nie musimy zmieniać aktualnych.
-            </aside>
+            <aside class="notes"></aside>
         </section>
         <section>
             <h2>Persistent data structure</h2>
@@ -375,43 +420,7 @@
                 - struktury danych są niezmienne ale zmieniać można referencje
             </aside>
         </section>
-        <section>
-            <section>
-                <h3>Referential transparency</h3>
-                <pre><code class="hljs" data-trim data-line-numbers="9-10">
-int add(int a, int b) {
-    return a + b
-}
 
-int mult(int a, int b) {
-    return a * b;
-}
-
-int x = add(2, mult(3, 4));
-int y = add(2, 12);
-					</code></pre>
-                <aside class="notes"></aside>
-            </section>
-            <section>
-                <pre><code class="hljs" data-trim>
-if num1 == 0 and sign == '+' and num2 == 0:
-    print("0+0 = 0")
-if num1 == 0 and sign == '+' and num2 == 1:
-    print("0+1 = 1")
-if num1 == 0 and sign == '+' and num2 == 2:
-    print("0+2 = 2")
-if num1 == 0 and sign == '+' and num2 == 3:
-    print("0+3 = 3")
-if num1 == 0 and sign == '+' and num2 == 4:
-    print("0+4 = 4")
-if num1 == 0 and sign == '+' and num2 == 5:
-    print("0+5 = 5")
-if num1 == 0 and sign == '+' and num2 == 6:
-    print("0+6 = 6")
-					</code></pre>
-
-            </section>
-        </section>
         <section>
             <h3>Side effects</h3>
             <ul>
