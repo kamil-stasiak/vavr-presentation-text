@@ -26,15 +26,138 @@
 <div class="reveal">
     <div class="slides">
         <section>
+            <section>
+                <h2>Introduction to vavr.io</h2>
+                <p><small>Created by <a href="http://github.com/kamil-stasiak">Kamil Stasiak</a></small></p>
+                <aside class="notes">
+                    Dzisiejsza prezentacja jest wprowadzeniem do progrowamowania funkcyjnego z wykorzystaniem biblioteki
+                    vavr.io. Moim celem jest wprowadzenie kilku pojęć (Monada, Clojuse, Predykat)
+                </aside>
+            </section>
+            <section id="themes">
+                <h2>Themes</h2>
+                <p>
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
+                        (default)</a> -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+                    <br>
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
+                    -
+                    <a href="#"
+                       onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+                </p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Agenda</h2>
+                <ul>
+                    <li>Functional Programming Fundamentals</li>
+                    <li>Java in functional world</li>
+                </ul>
+                <aside class="notes"></aside>
+            </section>
+        </section>
+
+        <section>
+            <h2>Functional Programming Fundamentals</h2>
+            <ul>
+                <li>Functions are first class citizens
+                    <ul>
+                        <li>Higher order functions</li>
+                        <li>Curring</li>
+                        <li>Lifting</li>
+                        <li>Partial application</li>
+                    </ul>
+                </li>
+            </ul>
+            <aside class="notes">
+                - first class citizen - mogą być przekazywane, zwracana, przypisywane i porównywane.
+                - HOC - funkcja która zwraca lub przyjmuje jako parametr inne funkcje
+                - curring - zamiana funkcji która przyjmuje kilka argumentów na funkcję, która przyjume jeden argument
+                i zwraca funkcję, która przyjmuje pozostałe argumenty
+                - lifting - rozszerzenie dziedziny funkcji na większą domenę (dzielenie przez 0)
+                w przypadku, gdy wyjdziemy za zakres początkowej domeny to dostaniemy None()
+            </aside>
+        </section>
+
+
+        <section>
+            <h2>Functional Programming Fundamentals</h2>
+            <ul>
+                <li>Functions are first class citizens
+                    <ul>
+                        <li>Higher order functions</li>
+                        <li>Curring</li>
+                        <li>Lifting</li>
+                    </ul>
+                </li>
+                <li>Pure functions
+                    <ul>
+                        <li>No side effects</li>
+                        <li>Referential transparency</li>
+                    </ul>
+                </li>
+                <li>Values
+                    <ul>
+                        <li>Immutable objects</li>
+                        <li>Persistent/Functional data structure</li>
+                    </ul>
+                </li>
+            </ul>
+            <aside class="notes">
+                <ul>
+                    <li>Functions are first class citizens</li>
+                    - HOC - funkcja która zwraca lub przyjmuje jako parametr inne funkcje
+                    - curring -
+                    - lifting - rozszerzenie zakresu funkcji na większą domenę (dzielenie przez 0)
+                    w przypadku, gdy wyjdziemy za zakres początkowej domeny to dostaniemy None()
+                    <li>Pure functions</li>
+                    a
+                    - funkcja czysta to taka która nie ma efektów ubocznych
+                    - jej wynik zależy tylko od argumentów wejściowych - można wywołanie tej funkcji zamienić na wynik
+                    if a call can be replaced by its value without affecting the behavior of the program
+                    - funkcja jest czysta, jeżeli jej wszystkie wyrażenia są referential transparent
+                </ul>
+            </aside>
+        </section>
+
+
+        <section>
             <h2>GOF design patterns to functional</h2>
-            <aside>
-                Mario fusco From GOF to Lambda https://github.com/mariofusco/from-gof-to-lambda
+            <p><a href="https://github.com/mariofusco/from-gof-to-lambda">Mario fusco From GOF to Lambda</a></p>
+            <aside class="notes">
                 https://blog.jooq.org/2016/07/04/how-functional-programming-will-finally-do-away-with-the-gof-patterns/
             </aside>
         </section>
         <section>
             <h2>Monads and side effectt</h2>
-            <aside>
+            <aside class="notes">
                 Monads make side effects explicit, first class
                 Monady wymuszają kolejnośc bo boazują na danych
 
@@ -43,50 +166,135 @@
         </section>
         <section>
             <h2>Java in functional world</h2>
-            <aside>
+            <ul>
+                <li>final - immutable reference</li>
+                <li>Immutable objects</li>
+                <li>String, LoaclDateTime</li>
+            </ul>
+            <aside class="notes">
                 @Value - lombok immutable date like kotlin
-                final - immutable reference
+                <section>
+                    <h2>Functional Programming Fundamentals</h2>
+                    <ul>
+                        <li>Functions are first class citizens
+                            <ul>
+                                <li>Higher order functions</li>
+                                <li>Curring</li>
+                            </ul>
+                        </li>
+                        <li>Pure functions
+                            <ul>
+                                <li>No side effects</li>
+                                <li>Referential transparency</li>
+                            </ul>
+                        </li>
+                        <li>Values
+                            <ul>
+                                <li>Immutable objects</li>
+                                <li>Persistent/Functional data structure</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>Functions are first class citizens</li>
+                            - zapisujemy je do zmiennej, zwracamy, komponujemy
+                            <li>Pure functions</li>
+                            a
+                            - funkcja czysta to taka która nie ma efektów ubocznych
+                            - jej wynik zależy tylko od argumentów wejściowych - można wywołanie tej funkcji zamienić na
+                            wynik
+                            if a call can be replaced by its value without affecting the behavior of the program
+                            - funkcja jest czysta, jeżeli jej wszystkie wyrażenia są referential transparent
+                        </ul>
+                    </aside>
+                </section>
                 fuctions are not first class but we have funcitonal interfaces, lambdy, method references
                 no functions - only methods
                 data could be immutable -> String, LoaclDateTime
                 immutalbe collections - Collections.unmodifiableList(new ArrayList
                 <!-- <String>(Arrays.asList("one", "two", "three")) -->
-                    https://stackoverflow.com/questions/5998031/complete-list-of-immutable-jdk-classes
-                    va.lang.String The wrapper classes for the primitive types:
-                    java.lang.Integer
-                    java.lang.Byte
-                    java.lang.Character
-                    java.lang.Short
-                    java.lang.Boolean
-                    java.lang.Long
-                    java.lang.Double
-                    java.lang.Float
-                    java.lang.StackTraceElement (used in building exception stacktraces)
-                    Most of the enum classes
-                    java.math.BigInteger
-                    java.math.BigDecimal
-                    java.io.File
-                    java.awt.Font
-                    java.awt.BasicStroke
-                    java.awt.Color
-                    java.awt.GradientPaint,
-                    java.awt.LinearGradientPaint
-                    java.awt.RadialGradientPaint,
-                    java.awt.Cursor
-                    java.util.Locale
-                    java.util.UUID
-                    java.util.Collections
-                    java.net.URL
-                    java.net.URI
-                    java.net.Inet4Address
-                    java.net.Inet6Address
-                    java.net.InetSocketAddress
-                    most subclasses of java.security.Permission
+                If we're using Java 8 – we can try the new java.time.Instant and java.time.Duration classes. Both are
+                immutable
+                https://stackoverflow.com/questions/5998031/complete-list-of-immutable-jdk-classes
+                va.lang.String The wrapper classes for the primitive types:
+                java.lang.Integer
+                java.lang.Byte
+                java.lang.Character
+                java.lang.Short
+                java.lang.Boolean
+                java.lang.Long
+                java.lang.Double
+                java.lang.Float
+                java.lang.StackTraceElement (used in building exception stacktraces)
+                Most of the enum classes
+                java.math.BigInteger
+                java.math.BigDecimal
+                java.io.File
+                java.awt.Font
+                java.awt.BasicStroke
+                java.awt.Color
+                java.awt.GradientPaint,
+                java.awt.LinearGradientPaint
+                java.awt.RadialGradientPaint,
+                java.awt.Cursor
+                java.util.Locale
+                java.util.UUID
+                java.util.Collections
+                java.net.URL
+                java.net.URI
+                java.net.Inet4Address
+                java.net.Inet6Address
+                java.net.InetSocketAddress
+                most subclasses of java.security.Permission
+            </aside>
+        </section>
+        <section>
+            <h2>Java in functional world - libraries</h2>
+            <ul>
+                <li>Lombok @Value</li>
+            </ul>
+            <aside class="notes">
+                data could be immutable -> String, LoaclDateTime
+                copy on write collections
+                immutalbe collections - Collections.unmodifiableList(new ArrayList
+                <!-- <String>(Arrays.asList("one", "two", "three")) -->
+                https://stackoverflow.com/questions/5998031/complete-list-of-immutable-jdk-classes
+                va.lang.String The wrapper classes for the primitive types:
+                java.lang.Integer
+                java.lang.Byte
+                java.lang.Character
+                java.lang.Short
+                java.lang.Boolean
+                java.lang.Long
+                java.lang.Double
+                java.lang.Float
+                java.lang.StackTraceElement (used in building exception stacktraces)
+                Most of the enum classes
+                java.math.BigInteger
+                java.math.BigDecimal
+                java.io.File
+                java.awt.Font
+                java.awt.BasicStroke
+                java.awt.Color
+                java.awt.GradientPaint,
+                java.awt.LinearGradientPaint
+                java.awt.RadialGradientPaint,
+                java.awt.Cursor
+                java.util.Locale
+                java.util.UUID
+                java.util.Collections
+                java.net.URL
+                java.net.URI
+                java.net.Inet4Address
+                java.net.Inet6Address
+                java.net.InetSocketAddress
+                most subclasses of java.security.Permission
             </aside>
         </section>
         <section>
             <h2>Values</h2>
-            <aside>
+            <aside class="notes">
                 Informacje, dane, fakty - to jest centrum tego nad czym pracujemy. Odbieramy dane wejściowe,
                 przetwarzamy je,
                 przechowujemy, analizujemy, wyciągamy wnioski, wyświetlamy, filtrujemy.
@@ -117,20 +325,27 @@
 
                 Values
                 - łatwo się porównuje.
-                - współdzieli - przekazalibyście do 2 obiektów ten sam obiekt typu Date albo kolekcję? no ja nie, bo wiem, że można go łatwo zmieniać.
-                a jak czegoś nie można zmieniać, to możan użyć jednego obiektu i wszyskim zainteresowanym dać do niego referencję. Nie trzeba
-                robić defensive copying. Ale już ten sam obiekt string, LocalDate albo niemutowalna kolekcję? Zero stresu
-                - jeżeli jeden obiekt jest współdzielony przez 2 funkcje (dwie funkcje na nim operują) i jedna z nich zmieni ten obiekt,
+                - współdzieli - przekazalibyście do 2 obiektów ten sam obiekt typu Date albo kolekcję? no ja nie, bo
+                wiem, że można go łatwo zmieniać.
+                a jak czegoś nie można zmieniać, to możan użyć jednego obiektu i wszyskim zainteresowanym dać do niego
+                referencję. Nie trzeba
+                robić defensive copying. Ale już ten sam obiekt string, LocalDate albo niemutowalna kolekcję? Zero
+                stresu
+                - jeżeli jeden obiekt jest współdzielony przez 2 funkcje (dwie funkcje na nim operują) i jedna z nich
+                zmieni ten obiekt,
                 to może to wpłynąć na wynik drugiej funkcji - czy trzeba to wyjaśniać?
                 - raz policzony hashCode nigdy się nie zmieni
                 - nie trzeba implementować clone bo można reużywać obiektów
-                - niemutowalny string super, niemutowalna data super ale niemutowalny nasz własny obeikt? Niemutowalna lista? LOL nie dziękuję
-                - jezeli ktoś mi coś daje, daje coś do mojej funkcji i to coś może sie zmienić, to jest to mocno błedogenne
-                    - zerkam sobie na obiekt w momencie kiedy mogę, kiedy dostanę czas procesora, kiedy dane do mnie dolecą
-                       (dostaję tylko link do zasobu a zasób pod spodem ewoluuje ;/)
-                    - albo od razu sobie stworzę kopię tego obiektu i na nim będę działał (tworzenie kopii też chwilę trwa)
-                    - albo moja funkcja przestanie być deteminsytczna bo przy inpucie A może wygenerować B albo C w zależności
-                     czy w danym momencie obiekt się zmienił lub nie.
+                - niemutowalny string super, niemutowalna data super ale niemutowalny nasz własny obeikt? Niemutowalna
+                lista? LOL nie dziękuję
+                - jezeli ktoś mi coś daje, daje coś do mojej funkcji i to coś może sie zmienić, to jest to mocno
+                błedogennea
+                - zerkam sobie na obiekt w momencie kiedy mogę, kiedy dostanę czas procesora, kiedy dane do mnie dolecą
+                (dostaję tylko link do zasobu a zasób pod spodem ewoluuje ;/)
+                - albo od razu sobie stworzę kopię tego obiektu i na nim będę działał (tworzenie kopii też chwilę trwa)
+                - albo moja funkcja przestanie być deteminsytczna bo przy inpucie A może wygenerować B albo C w
+                zależności
+                czy w danym momencie obiekt się zmienił lub nie.
 
                 Wiedza jest pochoodną z faktów
                 - fakty można łączyć
@@ -139,11 +354,25 @@
                 Fakty to nie stan obecny! Facts != Recent Facts
                 You cannot update a fact, you can't change the past
 
-                Komunikujemuy się JSONem z innymi systemami (danymi) ale wewnątrz systemu psujemy to komunikując sie obiektami
-                Dane się nie zmieniają, obiekty mogą się zmieniać. Dlaczego tak sobie komplikujemy programy w mikroskali,
+                Komunikujemuy się JSONem z innymi systemami (danymi) ale wewnątrz systemu psujemy to komunikując sie
+                obiektami
+                Dane się nie zmieniają, obiekty mogą się zmieniać. Dlaczego tak sobie komplikujemy programy w
+                mikroskali,
                 skoro w makroskali to działa dobrze. Dane są super i decyzje
-                które na podstawie tych jsonów są pobierane są na dany moment w czasie i godzimy się z tym. Jeżeli pojawią
+                które na podstawie tych jsonów są pobierane są na dany moment w czasie i godzimy się z tym. Jeżeli
+                pojawią
                 się nowe fakty to podejmiemy nowe decyzje, nie musimy zmieniać aktualnych.
+            </aside>
+        </section>
+        <section>
+            <h2>Persistent data structure</h2>
+            <aside class="notes">
+                Kolekcje, które zachowują swoje właściwości.
+                To nie jest copy on write
+                - żeby dodąć / usunąć element musisz przejśc po wszystkich elementach i je skopiować
+                - persisten data structure zachowują swoja charakterystyki
+                - structural sharing
+                - struktury danych są niezmienne ale zmieniać można referencje
             </aside>
         </section>
         <section>
@@ -202,97 +431,8 @@ if num1 == 0 and sign == '+' and num2 == 6:
                 bazy dancyh, logów itd. Albo używanie monad.
             </aside>
         </section>
-        <section>
-            <h2>Functional Programming Fundamentals</h2>
-            <ul>
-                <li>Functions are first class citizens
-                    <ul>
-                        <li>Higher order functions</li>
-                        <li>Curring</li>
-                    </ul>
-                </li>
-                <li>Pure functions
-                    <ul>
-                        <li>No side effects</li>
-                        <li>Referential transparency</li>
-                    </ul>
-                </li>
-                <li>Values</li>
-            </ul>
-            <aside class="notes">
-                <ul>
-                    <li>Functions are first class citizens</li>
-                    - zapisujemy je do zmiennej, zwracamy, komponujemy
-                    <li>Pure functions</li>a
-                    - funkcja czysta to taka która nie ma efektów ubocznych
-                    - jej wynik zależy tylko od argumentów wejściowych - można wywołanie tej funkcji zamienić na wynik
-                    if a call can be replaced by its value without affecting the behavior of the program
-                    - funkcja jest czysta, jeżeli jej wszystkie wyrażenia są referential transparent
-                </ul>
-            </aside>
-        </section>
-        <section>
-            <h2>Introduction to vavr.io</h2>
-            <p>
-                <small>Created by <a href="http://github.com/kamil-stasiak">Kamil Stasiak</a></small>
-            </p>
 
-            <aside class="notes">
-                Dzisiejsza prezentacja jest wprowadzeniem do progrowamowania funkcyjnego z wykorzystaniem biblioteki
-                vavr.io. Moim celem jest wprowadzenie kilku pojęć (Monada, Clojuse, Predykat)
-            </aside>
-        </section>
 
-        <section>
-            <section>
-                <h2>Agenda</h2>
-                <ul>
-                    <li>Functional Programming Fundamentals</li>
-                    <li>Java in functional world</li>
-                </ul>
-                <aside class="notes">
-
-                </aside>
-            </section>
-            <section id="themes">
-                <h2>Themes</h2>
-                <p>
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
-                        (default)</a> -
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
-                    -
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
-                    -
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
-                    -
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
-                    -
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
-                    <br>
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
-                    -
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
-                    -
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
-                    -
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
-                    -
-                    <a href="#"
-                       onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-                </p>
-            </section>
-        </section>
-        <section>Slide 2</section>
     </div>
 </div>
 
