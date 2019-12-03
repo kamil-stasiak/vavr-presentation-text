@@ -31,7 +31,8 @@
                 <p><small>Created by <a href="http://github.com/kamil-stasiak">Kamil Stasiak</a></small></p>
                 <aside class="notes">
                     Dzisiejsza prezentacja jest wprowadzeniem do progrowamowania funkcyjnego z wykorzystaniem biblioteki
-                    vavr.io. Moim celem jest wprowadzenie kilku pojęć (Monada, Clojuse, Predykat)
+                    vavr.io. Moim celem jest wprowadzenie do Waszego języka kilku pojęć związanego z Paradygmatem obiektowym
+                    (Monada, Closuse, Predykat) oraz chciałbym pokazać kilka snippetów kodu.
                 </aside>
             </section>
             <section id="themes">
@@ -79,6 +80,7 @@
                 <ul>
                     <li>Functional Programming Fundamentals</li>
                     <li>Java in functional world</li>
+                    <li>Code</li>
                 </ul>
                 <aside class="notes"></aside>
             </section>
@@ -151,6 +153,34 @@ if num1 == 0 and sign == '+' and num2 == 6:
     print("0+6 = 6")
 					</code></pre>
             </section>
+        </section>
+
+        <section>
+            <h3>Side effects</h3>
+            <ul>
+                <li>Changing object in place</li>
+                <li>Logging to file</li>
+                <li>Saving to database</li>
+                <li>Sending data over web</li>
+                <li>Throwing error (new goto statement)</li>
+            </ul>
+            <aside class="notes">
+                Patrząc na tę liste od razu widać, że kod nasz kod by nic nie robił. Nawet najprostszy przykład
+                zsumowania 2 liczyb i wyświetlenia wyniku byłby niemogżliwy, bo wyświetlenie jest efektem ubocznym.
+                Jeżeli chodzi o obsługę efektów ubocznych to powinniśmy dążyć, by nasz kod miał jak najmniej funkcji
+                generujących efekty uboczne oraz używać ich na końcu obliczeń. Zrób wszystko co masz zrobić i jak
+                skończysz to wynik wrzuć do bazy dancyh, logów itd. Pomaga w tym użwywanie monad
+            </aside>
+        </section>
+
+        <section>
+            <h2>Monads and side effectt</h2>
+            <aside class="notes">
+                Monads make side effects explicit, first class
+                Monady wymuszają kolejnośc bo bazują na danych
+
+                Wszystko co użwya monady jest pure function bo wszyskie side effects są obsłużone.
+            </aside>
         </section>
 
         <section>
@@ -260,6 +290,35 @@ if num1 == 0 and sign == '+' and num2 == 6:
             </aside>
         </section>
 
+        <section>
+            <h2>Persistent / Functional Data structure</h2>
+            <aside class="notes">
+                Persistent - zawsze pozwala na odczyt poprzedniej swojej wersji gdy jest modyfikowana
+                - CopyOnWriteArrayList, CopyOnWriteArraySet
+                - Zachowuje swoje charakerystyki tzn nie trzeba ich kopiować żeby coś dodać / usunąć.
+                Nie trzeba odwiedzać każdego elementu ponieważ wykorzystują <b>structural sharing</b>
+                Functional - jest niezmienna, niemutowalna
+                - ImmutableList
+
+                - struktury danych są niezmienne ale zmieniać można referencje
+            </aside>
+        </section>
+
+        <section>
+            <h2>Java in functional world</h2>
+            <ul>
+                <li>final - immutable reference</li>
+                <li>Immutable objects: String, LoaclDateTime</li>
+                <li>Functional interfaces, lambdas, method references</li>
+                <li>Immutable collections</li>
+            </ul>
+            <p>Instant Duration, Integer Byte Character Short Boolean Long Double Float StackTraceElement,
+                BigInteger BigDecimal File Font BasicStroke Color GradientPaint LinearGradientPaint
+                RadialGradientPaint Cursor Locale UUID Collections URL URI Inet4Address Inet6Address
+                InetSocketAddress </p>
+            <aside class="notes">
+            </aside>
+        </section>
 
         <section>
             <h2>GOF design patterns to functional</h2>
@@ -268,180 +327,22 @@ if num1 == 0 and sign == '+' and num2 == 6:
                 https://blog.jooq.org/2016/07/04/how-functional-programming-will-finally-do-away-with-the-gof-patterns/
             </aside>
         </section>
-        <section>
-            <h2>Monads and side effectt</h2>
-            <aside class="notes">
-                Monads make side effects explicit, first class
-                Monady wymuszają kolejnośc bo boazują na danych
 
-                Wszystko co użwya monady jest pure function bo wszyskie side effects są obsłużone.
-            </aside>
-        </section>
         <section>
-            <h2>Java in functional world</h2>
-            <ul>
-                <li>final - immutable reference</li>
-                <li>Immutable objects</li>
-                <li>String, LoaclDateTime</li>
-            </ul>
-            <aside class="notes">
-                @Value - lombok immutable date like kotlin
-                <section>
-                    <h2>Functional Programming Fundamentals</h2>
-                    <ul>
-                        <li>Functions are first class citizens
-                            <ul>
-                                <li>Higher order functions</li>
-                                <li>Curring</li>
-                            </ul>
-                        </li>
-                        <li>Pure functions
-                            <ul>
-                                <li>No side effects</li>
-                                <li>Referential transparency</li>
-                            </ul>
-                        </li>
-                        <li>Values
-                            <ul>
-                                <li>Immutable objects</li>
-                                <li>Persistent/Functional data structure</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <aside class="notes">
-                        <ul>
-                            <li>Functions are first class citizens</li>
-                            - zapisujemy je do zmiennej, zwracamy, komponujemy
-                            <li>Pure functions</li>
-                            a
-                            - funkcja czysta to taka która nie ma efektów ubocznych
-                            - jej wynik zależy tylko od argumentów wejściowych - można wywołanie tej funkcji zamienić na
-                            wynik
-                            if a call can be replaced by its value without affecting the behavior of the program
-                            - funkcja jest czysta, jeżeli jej wszystkie wyrażenia są referential transparent
-                        </ul>
-                    </aside>
-                </section>
-                fuctions are not first class but we have funcitonal interfaces, lambdy, method references
-                no functions - only methods
-                data could be immutable -> String, LoaclDateTime
-                immutalbe collections - Collections.unmodifiableList(new ArrayList
-                <!-- <String>(Arrays.asList("one", "two", "three")) -->
-                If we're using Java 8 – we can try the new java.time.Instant and java.time.Duration classes. Both are
-                immutable
-                https://stackoverflow.com/questions/5998031/complete-list-of-immutable-jdk-classes
-                va.lang.String The wrapper classes for the primitive types:
-                java.lang.Integer
-                java.lang.Byte
-                java.lang.Character
-                java.lang.Short
-                java.lang.Boolean
-                java.lang.Long
-                java.lang.Double
-                java.lang.Float
-                java.lang.StackTraceElement (used in building exception stacktraces)
-                Most of the enum classes
-                java.math.BigInteger
-                java.math.BigDecimal
-                java.io.File
-                java.awt.Font
-                java.awt.BasicStroke
-                java.awt.Color
-                java.awt.GradientPaint,
-                java.awt.LinearGradientPaint
-                java.awt.RadialGradientPaint,
-                java.awt.Cursor
-                java.util.Locale
-                java.util.UUID
-                java.util.Collections
-                java.net.URL
-                java.net.URI
-                java.net.Inet4Address
-                java.net.Inet6Address
-                java.net.InetSocketAddress
-                most subclasses of java.security.Permission
-            </aside>
-        </section>
-        <section>
-            <h2>Java in functional world - libraries</h2>
-            <ul>
-                <li>Lombok @Value</li>
-            </ul>
-            <aside class="notes">
-                data could be immutable -> String, LoaclDateTime
-                copy on write collections
-                immutalbe collections - Collections.unmodifiableList(new ArrayList
-                <!-- <String>(Arrays.asList("one", "two", "three")) -->
-                https://stackoverflow.com/questions/5998031/complete-list-of-immutable-jdk-classes
-                va.lang.String The wrapper classes for the primitive types:
-                java.lang.Integer
-                java.lang.Byte
-                java.lang.Character
-                java.lang.Short
-                java.lang.Boolean
-                java.lang.Long
-                java.lang.Double
-                java.lang.Float
-                java.lang.StackTraceElement (used in building exception stacktraces)
-                Most of the enum classes
-                java.math.BigInteger
-                java.math.BigDecimal
-                java.io.File
-                java.awt.Font
-                java.awt.BasicStroke
-                java.awt.Color
-                java.awt.GradientPaint,
-                java.awt.LinearGradientPaint
-                java.awt.RadialGradientPaint,
-                java.awt.Cursor
-                java.util.Locale
-                java.util.UUID
-                java.util.Collections
-                java.net.URL
-                java.net.URI
-                java.net.Inet4Address
-                java.net.Inet6Address
-                java.net.InetSocketAddress
-                most subclasses of java.security.Permission
-            </aside>
-        </section>
-        <section>
-            <h2>Values</h2>
+            <h2>Code!</h2>
             <aside class="notes"></aside>
         </section>
+
         <section>
-            <h2>Persistent data structure</h2>
-            <aside class="notes">
-                Kolekcje, które zachowują swoje właściwości.
-                To nie jest copy on write
-                - żeby dodąć / usunąć element musisz przejśc po wszystkich elementach i je skopiować
-                - persisten data structure zachowują swoja charakterystyki
-                - structural sharing
-                - struktury danych są niezmienne ale zmieniać można referencje
-            </aside>
+            <h2>Thank you</h2>
+            <aside class="notes"></aside>
         </section>
 
         <section>
-            <h3>Side effects</h3>
-            <ul>
-                <li>Changing object in place</li>
-                <li>Logging to file</li>
-                <li>Saving to database</li>
-                <li>Sending data over web</li>
-                <li>Throwing error (new goto statement)</li>
-            </ul>
-            <aside class="notes">
-                Patrząc na tę liste od razu widać, że kod nasz kod by nic nie robił. Nawet najprostszy przykład
-                zsumowania
-                2 liczyb i wyświetlenia wyniku byłby niemogżliwy, bo wyświetlenie jest efektem ubocznym. Jeżeli chodzi o
-                obsługę efektów ubocznych to powinniśmy dążyć, by nasz kod miał jak najmniej funkcji generujących efekty
-                uboczne oraz używać ich na końcu obliczeń. Zrób wszystko co masz zrobić i jak skończysz to wynik wrzuć
-                do
-                bazy dancyh, logów itd. Albo używanie monad.
-            </aside>
+            <h2>README.md</h2>
+            <p><a href="https://github.com/mariofusco/from-gof-to-lambda">Mario fusco From GOF to Lambda</a></p>
+            <aside class="notes"></aside>
         </section>
-
-
     </div>
 </div>
 
