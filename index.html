@@ -31,8 +31,17 @@
                 <p><small>Created by <a href="http://github.com/kamil-stasiak">Kamil Stasiak</a></small></p>
                 <aside class="notes">
                     Dzisiejsza prezentacja jest wprowadzeniem do progrowamowania funkcyjnego z wykorzystaniem biblioteki
-                    vavr.io. Moim celem jest wprowadzenie do Waszego języka kilku pojęć związanego z Paradygmatem obiektowym
+                    vavr.io. Moim celem jest wprowadzenie do Waszego języka kilku pojęć związanego z Paradygmatem
+                    obiektowym
                     (Monada, Closuse, Predykat) oraz chciałbym pokazać kilka snippetów kodu.
+
+
+                    New notes:
+                    Vavr api: Function1...8
+                    Tuple up to 22?
+                    -- never use get
+
+
                 </aside>
             </section>
             <section id="themes">
@@ -159,6 +168,7 @@ if num1 == 0 and sign == '+' and num2 == 6:
             <h3>Side effects</h3>
             <ul>
                 <li>Changing object in place</li>
+                <li>Printing to console</li>
                 <li>Logging to file</li>
                 <li>Saving to database</li>
                 <li>Sending data over web</li>
@@ -175,11 +185,18 @@ if num1 == 0 and sign == '+' and num2 == 6:
 
         <section>
             <h2>Monads and side effectt</h2>
+            <p> Option is a monad that models the effect of optionality</p>
+            <p>Future is a monad that models latency as an effect</p>
+            <p>Try is a monad that models the effect of failures (manages exceptions as effects)</p>
             <aside class="notes">
                 Monads make side effects explicit, first class
                 Monady wymuszają kolejnośc bo bazują na danych
 
                 Wszystko co użwya monady jest pure function bo wszyskie side effects są obsłużone.
+
+                Option is a monad that models the effect of optionality
+                Future is a monad that models latency as an effect
+                Try is a monad that models the effect of failures (manages exceptions as effects)
             </aside>
         </section>
 
@@ -191,8 +208,7 @@ if num1 == 0 and sign == '+' and num2 == 6:
             </ul>
             <aside class="notes">
                 Informacje, dane, fakty - to jest centrum tego nad czym pracujemy. Odbieramy dane wejściowe,
-                przetwarzamy je,
-                przechowujemy, analizujemy, wyciągamy wnioski, wyświetlamy, filtrujemy.
+                przetwarzamy je, przechowujemy, analizujemy, wyciągamy wnioski, wyświetlamy, filtrujemy.
 
                 Informacje są stałe w czasie.
                 - O 8:05 ktoś dodał komputer do koszyka w sklepie internetowym
@@ -308,25 +324,18 @@ if num1 == 0 and sign == '+' and num2 == 6:
             <h2>Java in functional world</h2>
             <ul>
                 <li>final - immutable reference</li>
-                <li>Immutable objects: String, LoaclDateTime</li>
                 <li>Functional interfaces, lambdas, method references</li>
                 <li>Immutable collections</li>
+                <li>Immutable objects</li>
             </ul>
-            <p>Instant Duration, Integer Byte Character Short Boolean Long Double Float StackTraceElement,
-                BigInteger BigDecimal File Font BasicStroke Color GradientPaint LinearGradientPaint
+            <p class="fragment">Instant Duration, Integer Byte Character Short Boolean Long Double Float
+                StackTraceElement BigInteger BigDecimal File Font BasicStroke Color GradientPaint LinearGradientPaint
                 RadialGradientPaint Cursor Locale UUID Collections URL URI Inet4Address Inet6Address
                 InetSocketAddress </p>
             <aside class="notes">
             </aside>
         </section>
 
-        <section>
-            <h2>GOF design patterns to functional</h2>
-            <p><a href="https://github.com/mariofusco/from-gof-to-lambda">Mario fusco From GOF to Lambda</a></p>
-            <aside class="notes">
-                https://blog.jooq.org/2016/07/04/how-functional-programming-will-finally-do-away-with-the-gof-patterns/
-            </aside>
-        </section>
 
         <section>
             <h2>Code!</h2>
